@@ -275,7 +275,7 @@ def chi2sGauss(df):
     
     # rename mjd column to time
     allCols = list(df.columns)
-    allCols[2] = 'time'
+    allCols[0] = 'time'
     df.columns = allCols
     
     #remove magnitudes to avoid errors
