@@ -1,1 +1,3 @@
-./calculatedFeatures/
+calculatedFeatures/
+__pycache__/
+*.csv
