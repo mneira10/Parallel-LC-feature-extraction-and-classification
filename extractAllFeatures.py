@@ -57,12 +57,12 @@ def extract_features(df_lcs):
     index_copy_num_list = []
 #     print("Process ", pid, " starting processing loop...")
     num_objects = num_ids*num_copies
-    for kasd,num_copy in tqdm.tqdm(enumerate(num_copy_list),total=len(num_copy_list), desc='outer'):
-        for i, obj_id in tqdm.tqdm(enumerate(unique_ids_list),total = len(unique_ids_list),desc='inner'):
+    for kasd,num_copy in enumerate(num_copy_list):
+        for i, obj_id in enumerate(unique_ids_list):
             # Print status
             current_object_i = (num_copy+1)*(i+1)
-#             if(current_object_i%int(num_objects/1000) == 0):
-#                 print(current_object_i, '/', num_objects)
+            if(current_object_i%1000 == 0):
+                print(current_object_i, '/', num_objects)
             # Get current object light curve
 #             print(pid, current_object_i, 'geting object light curve')
             df_object = df_lcs.loc[obj_id, :, num_copy]
@@ -83,8 +83,8 @@ def extract_features(df_lcs):
             feats_dict['ObsCount'].append(df_object.shape[0])
             
             #TEMPORARYYYY---------------------------------
-            if i==4:
-              break
+            # if i==4:
+            #   break
 
     # Create feature dataframe
     print(len(index_id_list))
