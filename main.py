@@ -131,7 +131,13 @@ for singleFilter in filters:
 
       # --------------------------------------------
       uniqueIds = allDf.index.get_level_values('ID').unique()
-      numIds = len(uniqueIds)
+      
+      #TOO CHECKKKKKK, NOT FINAL!!!
+      numIds = 100
+      # numIds = len(uniqueIds)
+
+
+
       idChunks = [uniqueIds[i*numIds//n:(i+1)*numIds//n] for i in range(0, n)]
       assert len(uniqueIds) == sum([len(x) for x in idChunks])
       
