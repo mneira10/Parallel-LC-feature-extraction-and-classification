@@ -68,8 +68,10 @@ def extract_features(df_lcs):
             df_object = df_lcs.loc[obj_id, :, num_copy]
             
             # Get features
-            obj_feats = extract.features(df_object, feats_dict)
-
+            try:
+                obj_feats = extract.features(df_object, feats_dict)
+            except:
+                continue
             # Append features
             for k, v in obj_feats.items():
                 feats_dict[k].append(obj_feats[k])

@@ -15,6 +15,7 @@ n = comm.Get_size()
 
 
 if rank ==0 :
+  print('Main thread running...')
   #argparse stuff
   parser = argparse.ArgumentParser(description='Extract light curve features from csv file.')
 
@@ -29,6 +30,7 @@ if rank ==0 :
   print('sims file: {}'.format(args.simsFile))
   print('reals file: {}'.format(args.realsFile))
 
+  
   #open files
   data = pd.read_pickle(args.lcFile)
   sims = pickle.load(open(args.simsFile,'rb'))
@@ -132,9 +134,7 @@ for singleFilter in filters:
       # --------------------------------------------
       uniqueIds = allDf.index.get_level_values('ID').unique()
       
-      #TOO CHECKKKKKK, NOT FINAL!!!
-      numIds = 100
-      # numIds = len(uniqueIds)
+      numIds = len(uniqueIds)
 
 
 
